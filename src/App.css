@@ -1,0 +1,31 @@
+/* Existing float for the "Hello" bubble */
+@keyframes float {
+  0%, 100% {
+    transform: translate(-620%, -50%) translateY(0);
+  }
+  50% {
+    transform: translate(-620%, -50%) translateY(-15px);
+  }
+}
+
+.animate-float {
+  animation: float 2s ease-in-out infinite;
+}
+
+/* New float for the larger right circular icon */
+@keyframes floatLarge {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-floatLarge {
+  animation: floatLarge 3.2s ease-in-out infinite;
+}
+
