@@ -1,212 +1,155 @@
-import React, { useEffect, useRef, useState } from 'react';
-import "./portfolio.css";
-// import { motion, useScroll, useTransform } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 import codingNinjas from "../Projects/codingNinjas.jpg";
 import flyAway from "../Projects/flyAway.jpg";
 import studyNotion from "../Projects/studyNotion.jpg";
 import SweetleyYours from "../Projects/SweetleyYours.jpg";
-import { motion, useInView, useScroll, useTransform } from "motion/react";
 
-
-
-
-const items = [
-    {
-        id: 1,
-        img: studyNotion,
-        title: "Full Stack Ed Tech Application",
-        desc: "StudyNotion is a full-stack EdTech platform built with the MERN stack, similar to Udemy. It features secure authentication, role-based access for students, instructors, and admins, and dynamic dashboards. Instructors can create and manage courses, while students can track their learning progress, making it a scalable and engaging online learning solution.",
-        link: "https://github.com/logicscienc/StudyNotion",
-       
-    },
-    {
-        id: 2,
-        img: SweetleyYours,
-        title: "Full Stack E Commerce Website",
-        desc: "SweetleyYours is a MERN stack e-commerce platform specializing in delivering desserts from around the world, from classic Indian sweets to continental treats. It features secure authentication, cart and wishlist management, order tracking, and integrated payments. Currently built for customers, future updates will include an admin dashboard for managing products and orders.",
-        link: "https://github.com/logicscienc/CaramelCorner",
-    },
-    {
-        id: 3,
-        img: codingNinjas,
-        title: "React and Tailwind a Clone ",
-        desc: "A fully responsive and interactive clone of the Coding Ninjas website, built with modern web development technologies. This project replicates the look, feel, and core user experience of the original platform, while offering a modular, clean codebase suitable for further development and experimentation.",
-        link: "https://luminous-klepon-115574.netlify.app",
-    },
-    {
-        id: 4,
-        img: flyAway,
-        title: "Full Stack Travel Booking Website",
-        desc: "FlyAway is a MERN stack travel booking platform that allows users to search, book, and manage trips seamlessly. It includes secure authentication, wishlist and booking management, and integrated payments. Currently focused on the customer experience, with future plans to add an admin panel for managing listings and bookings.",
-        link: "https://github.com/logicscienc/TravelWithLove",
-    },   
-
+const projects = [
+  {
+    id: 1,
+    img: studyNotion,
+    title: "Full Stack Ed Tech Application",
+    desc: "A Udemy-like platform built with MERN stack. Features authentication, dashboards, and course management for students and instructors.",
+    link: "https://github.com/logicscienc/StudyNotion",
+    status: "completed", // 🟢 Completed
+  },
+  {
+    id: 2,
+    img: SweetleyYours,
+    title: "Full Stack E-Commerce Website",
+    desc: "An online dessert store built with MERN stack, offering global sweets with secure payments and wishlist features.",
+    link: "https://github.com/logicscienc/CaramelCorner",
+    status: "completed", // 🟢 Completed
+  },
+  {
+    id: 3,
+    img: codingNinjas,
+    title: "Coding Ninjas Clone",
+    desc: "A fully responsive clone of Coding Ninjas built with React and Tailwind, focusing on UI and clean code structure.",
+    link: "https://luminous-klepon-115574.netlify.app",
+    status: "completed", // 🟢 Completed
+  },
+  {
+    id: 4,
+    img: flyAway,
+    title: "Travel Booking Website",
+    desc: "A MERN stack travel booking site with authentication, bookings, and wishlist features.",
+    link: "https://github.com/logicscienc/TravelWithLove",
+    status: "in-progress", // 🔴 In Progress
+  },
 ];
 
-
-
-const imgVariants = {
-  initial: {
-    x: -500,
-    y: 500,
-    opacity: 0,
-  },
-  animate: {
-    x: 0,
-    y: 0,
+// Framer Motion Variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
     opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: "easeInOut",
-    },
+    transition: { staggerChildren: 0.25 },
   },
 };
 
-const textVariants = {
-  initial: {
-    x: 500,
-    y: 500,
-    opacity: 0,
-  },
-  animate: {
-    x: 0,
-    y: 0,
+const cardVariants = {
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  visible: {
     opacity: 1,
-    transition: {
-      duration: 0.5,
-      ease: "easeInOut",
-      staggerChildren: 0.05,
-    },
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.6, ease: "easeOut" },
   },
-};
-
-const ListItem = ({ item }) => {
-  const ref = useRef();
-
-  const isInView = useInView(ref, { margin: "-100px" });
-
-  return (
-    <div className="pItem" ref={ref}>
-      <motion.div
-        variants={imgVariants}
-        animate={isInView ? "animate" : "initial"}
-        className="pImg"
-      >
-        <img src={item.img} alt="" />
-      </motion.div>
-      <motion.div
-        variants={textVariants}
-        animate={isInView ? "animate" : "initial"}
-        className="pText"
-      >
-        <motion.h1 variants={textVariants}>{item.title}</motion.h1>
-        <motion.p variants={textVariants}>{item.desc}</motion.p>
-        <motion.a variants={textVariants} href={item.link}>
-          <button>View Project</button>
-        </motion.a>
-      </motion.div>
-    </div>
-  );
 };
 
 const Projects = () => {
-  const [containerDistance, setContainerDistance] = useState(0);
-  const ref = useRef(null);
-
-  // useEffect(() => { 
-  //   if (ref.current) {
-  //     const rect = ref.current.getBoundingClientRect();
-  //     setContainerDistance(rect.left);
-  //   }
-  // }, []);
-
-  // FIX: Re-calculate when screen size changes
-  useEffect(() => {
-    const calculateDistance = () => {
-      if (ref.current) {
-        const rect = ref.current.getBoundingClientRect();
-        setContainerDistance(rect.left);
-      }
-    };
-
-    calculateDistance();
-
-    window.addEventListener("resize", calculateDistance);
-
-    return () => {
-      window.removeEventListener("resize", calculateDistance);
-    };
-  }, []);
-
-  const { scrollYProgress } = useScroll({ target: ref });
-
-const xTranslate = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [0, -window.innerWidth * items.length]
-  );
-
-
   return (
-    <div className="portfolio " ref={ref}>
-      <div className="flex justify-center mb-8">
-        <div className="
-  inline-block
-  max-w-[90%] 
-  rounded-full
-  px-4 sm:px-6 md:px-8
-  py-2 sm:py-3
-  font-semibold text-lg sm:text-xl md:text-2xl
-  text-white
-  relative overflow-hidden
-  bg-gradient-to-r from-black via-gray-800 to-black
-  bg-[length:200%_200%]
-  animate-glowSlide
-">
-        <span className="relative z-10">MY Personal Projects</span>
-        </div>
+    <section className="relative py-16 px-6 md:px-12 bg-black overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        {/* Section Title */}
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl md:text-5xl font-extrabold text-center text-white mb-14 tracking-wide"
+        >
+          My Personal Projects
+        </motion.h2>
+
+        {/* Projects Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
+        >
+          {projects.map((project) => (
+            <motion.div
+              key={project.id}
+              variants={cardVariants}
+              className="relative backdrop-blur-xl bg-white/10 rounded-2xl border border-white/20 shadow-lg overflow-hidden hover:shadow-pink-500/40 transition-all duration-500 hover:-translate-y-2"
+            >
+              {/* Project Image Wrapper */}
+              <div className="relative overflow-hidden">
+                <motion.img
+                  src={project.img}
+                  alt={project.title}
+                  className="w-full h-48 object-cover transform transition-transform duration-500 hover:scale-110"
+                />
+
+                {/* Status Dot */}
+                <div className="absolute bottom-3 right-3">
+                  <div
+                    className={`relative w-4 h-4 rounded-full ${
+                      project.status === "completed" ? "bg-green-500" : "bg-red-500"
+                    }`}
+                  >
+                    {/* Blinking Effect */}
+                    <span
+                      className={`absolute inline-flex h-full w-full rounded-full opacity-75 ${
+                        project.status === "completed"
+                          ? "bg-green-500 animate-ping"
+                          : "bg-red-500 animate-ping"
+                      }`}
+                    ></span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Project Info */}
+              <div className="p-6 flex flex-col justify-between min-h-[220px]">
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    {project.desc}
+                  </p>
+                </div>
+
+                {/* Button */}
+                <motion.a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="mt-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-medium py-2 px-4 rounded-lg text-center text-sm shadow-lg hover:from-purple-600 hover:to-pink-500 transition-all"
+                >
+                  View Project
+                </motion.a>
+              </div>
+
+              {/* Subtle glowing border */}
+              <div className="absolute inset-0 rounded-2xl pointer-events-none border border-white/20"></div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-      <motion.div className="pList" style={{ x: xTranslate }}>
-        <div
-          className="empty"
-          style={{
-            width: window.innerWidth - containerDistance,
-            // backgroundColor: "pink",
-          }}
-        />
-        {items.map((item) => (
-          <ListItem item={item} key={item.id} />
-        ))}
-      </motion.div>
-      <section />
-      <section />
-      <section />
-      
-      <div className="pProgress">
-        <svg width="100%" height="100%" viewBox="0 0 160 160">
-          <circle
-            cx="80"
-            cy="80"
-            r="70"
-            fill="none"
-            stroke="#ddd"
-            strokeWidth={20}
-          />
-          <motion.circle
-            cx="80"
-            cy="80"
-            r="70"
-            fill="none"
-            stroke="#dd4c62"
-            strokeWidth={20}
-            style={{ pathLength: scrollYProgress }}
-            transform="rotate(-90 80 80)"
-          />
-        </svg>
-      </div>
-    </div>
+    </section>
   );
 };
 
+export default Projects;
 
-export default Projects
+
+
