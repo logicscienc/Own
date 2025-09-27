@@ -10,9 +10,23 @@ const Experience = () => {
   return (
      <div className="max-w-full mx-auto p-4 sm:p-6 md:p-8 rounded-xl shadow-lg">
       {/* Experience Heading */}
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 sm:mb-8 text-center text-gray-900 dark:text-gray-100">
-        Experience
-      </h1>
+      <div className="flex justify-center mb-8">
+        <div className="
+  inline-block
+  max-w-[90%] 
+  rounded-full
+  px-4 sm:px-6 md:px-8
+  py-2 sm:py-3
+  font-semibold text-lg sm:text-xl md:text-2xl
+  text-white
+  relative overflow-hidden
+  bg-gradient-to-r from-black via-gray-800 to-black
+  bg-[length:200%_200%]
+  animate-glowSlide
+">
+        <span className="relative z-10">Experience</span>
+        </div>
+      </div>
 
       {/* GitHub Contributions Section */}
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-center text-gray-800 dark:text-gray-200">

@@ -148,7 +148,24 @@ const xTranslate = useTransform(
 
 
   return (
-    <div className="portfolio" ref={ref}>
+    <div className="portfolio " ref={ref}>
+      <div className="flex justify-center mb-8">
+        <div className="
+  inline-block
+  max-w-[90%] 
+  rounded-full
+  px-4 sm:px-6 md:px-8
+  py-2 sm:py-3
+  font-semibold text-lg sm:text-xl md:text-2xl
+  text-white
+  relative overflow-hidden
+  bg-gradient-to-r from-black via-gray-800 to-black
+  bg-[length:200%_200%]
+  animate-glowSlide
+">
+        <span className="relative z-10">MY Personal Projects</span>
+        </div>
+      </div>
       <motion.div className="pList" style={{ x: xTranslate }}>
         <div
           className="empty"

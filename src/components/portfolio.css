@@ -1,32 +1,123 @@
+/* Main container */
 .portfolio {
- height: 400vh; position: relative; }
-  .pList { 
-    position: sticky;
-     top: 0; display:
-      flex; height: 100vh;
-       width: max-content;
-       } 
-  .pItem { height: 100vh;
-     width: 100vw;
-      overflow: hidden;
-       display: flex;
-        align-items: center;
-         justify-content: center;
-          /* gap: 100px; */
-           gap: clamp(50px, 5vw, 100px);
-         } 
-  .pProgress { /* position: fixed; left: 40px; width: 80px; height: 80px; left: 0; bottom: 80%; */ position: fixed; top: 60px; /* distance from top */ left: 40px; /* distance from left */ width: 80px; height: 80px; z-index: 100; will-change: transform; }
-   .pImg { width: 40%; border-radius: 20px; overflow: hidden; } 
-   .pImg img { width: 100%; height: 100%; object-fit: cover; }
-    .pText { width: 40%; display: flex; flex-direction: column; gap: 24px; color: gray; } .pText h1 { font-size: 56px; color: gray; } 
-    .pText p { font-weight: 300; color: gray; } 
-    .pText button { background-color: rgb(14, 87, 14); padding: 12px; border-radius: 10px; border: none; font-weight: 500; cursor: pointer; }
-     @media (max-width: 1536px) { .pItem { gap: 50px; } } 
-     @media (max-width: 1280px) { .pText h1 { font-size: 48px; } }
-      @media (max-width: 1024px) { .pItem { flex-direction: column; } .pImg, .pText { width: 80%; } .pProgress { bottom: 100px; left: 100%; } }
-       @media (max-width: 768px) { 
-        .pProgress {
-           width: 50px;
-            height: 50px;
-           } 
-          }
+  height: 400vh;
+  position: relative;
+   overflow-x: visible;
+}
+
+/* Horizontal scrolling list */
+.pList {
+  position: sticky;
+  top: 0;
+  display: flex;
+  height: 100vh;
+  width: max-content;
+  overflow-x: visible;
+}
+
+/* Each project item */
+.pItem {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+/* Scroll progress circle */
+.pProgress {
+  position: fixed;
+  top: 60px; /* distance from top */
+  left: 40px; /* distance from left */
+  width: 80px;
+  height: 80px;
+  z-index: 100;
+  will-change: transform;
+}
+
+/* Project image */
+.pImg {
+  width: 40%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.pImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Project text */
+.pText {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: gray;
+}
+
+.pText h1 {
+  font-size: 56px;
+  color: gray;
+}
+
+.pText p {
+  font-weight: 300;
+  color: gray;
+}
+
+ .pText button {
+  background-color: rgb(14, 87, 14);
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+} 
+
+/* RESPONSIVE BREAKPOINTS */
+
+/* Extra large screens */
+@media (max-width: 1536px) {
+  .pItem {
+    gap: 50px;
+  }
+}
+
+/* Large screens */
+@media (max-width: 1280px) {
+  .pText h1 {
+    font-size: 48px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .pItem {
+    flex-direction: column;
+  }
+
+  .pImg,
+  .pText {
+    width: 80%;
+  }
+
+  .pProgress {
+    bottom: 100px;
+    left: 100%;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 768px) {
+   .portfolio {
+    margin-top: 20px; /* reduce gap between Experience and Projects */
+  }
+  .pProgress {
+    width: 50px;
+    height: 50px;
+  }
+}

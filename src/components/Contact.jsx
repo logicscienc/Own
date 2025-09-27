@@ -61,19 +61,19 @@ const Contact = () => {
     <div className='contact' ref={ref} onSubmit={sendEmail}>
       <div className='cSection'>
         <motion.form variants={listVariant}  ref={form} animate={isInView ? "animate" : "initial"}>
-          <motion.h1 variants={listVariant} className='cTitle text-white'>Let's keep in touch</motion.h1>
+          <motion.h1 variants={listVariant} className='cTitle text-white text-3xl'>Let's keep in touch</motion.h1>
           <motion.div variants={listVariant} className='formItem '>
-            <label className='text-white'>Name</label>
+            <label className='text-white text-xl'>Name</label>
             <input type="text" placeholder='John Doe'  name="user_name"  required/>
           </motion.div>
 
           <motion.div variants={listVariant} className='formItem '>
-            <label className='text-white'>Email</label>
+            <label className='text-white text-xl'>Email</label>
             <input type='email' placeholder='john@gmail.com'  name="user_email"  required/>
           </motion.div>
 
           <motion.div variants={listVariant} className='formItem '>
-            <label className='text-white'>Message</label>
+            <label className='text-white text-xl'>Message</label>
             <textarea rows={10} placeholder='Write your message...' name="message"  required></textarea>
           </motion.div>
 
@@ -83,7 +83,9 @@ const Contact = () => {
 
         </motion.form>
       </div>
-      <div className='cSection'><ContactSvg/></div>
+      <div className="cSection w-full max-w-3xl mx-auto px-4">
+  <ContactSvg className="w-full sm:w-3/4 lg:w-1/2 h-auto" />
+</div>
     </div>
   )
 }

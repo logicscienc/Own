@@ -16,6 +16,10 @@ export default {
       animation: {
         glowSlide: 'glowSlide 3s ease-in-out infinite',
       },
+
+      screens: {
+        'xs': '380px', 
+      },
     
     },
   },

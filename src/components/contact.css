@@ -29,16 +29,60 @@ form{
   border-radius: 50px;
 }
 
-input, textarea{
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
+
+
+/* Shared styling for both inputs and textarea */
+input,
+textarea {
+  width: 100%;                    
+  padding: 12px 14px;              
+  font-size: 16px;                  
+  border: 1px solid #444;          
+  border-radius: 8px;              
+  background-color: #111;          
+  color: #fff;                      
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.2); 
+  transition: all 0.3s ease;       
+}
+
+/* Focus state */
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #1ED760; /* Green highlight border */
+  box-shadow: 0 0 12px rgba(30, 215, 96, 0.6); /* Bright green glow */
+}
+
+/* Textarea specific styling */
+textarea {
+  min-height: 120px;              /* Default height for text area */
+  line-height: 1.4;                /* Better text readability */
+  resize: vertical;                /* Allow only vertical resizing */
 }
 
 .formItem{
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+.formItem input {
+  height: 50px;        
+  padding: 10px 14px;  
+  font-size: 16px;     
+  border-radius: 8px;            /* Rounded corners */
+  border: 1px solid #444;        /* Subtle dark gray border */
+  background-color: #111;        /* Slightly lighter than black for contrast */
+  color: #fff;                    /* White text */
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.2); /* Soft white outer glow */
+  transition: all 0.3s ease;   /* Smooth hover/focus animation */
+}
+
+
+/* Add a slightly stronger shadow on focus */
+.formItem input:focus {
+  outline: none;
+  border-color: #1ED760; /* Optional highlight color */
+  box-shadow: 0 0 12px rgba(30, 215, 96, 0.6);
 }
 
 label{
