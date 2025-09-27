@@ -11,8 +11,8 @@ const Robo = () => {
     >
       {/* LEFT CONTENT */}
       <div
-        className="absolute max-w-xl w-full z-10
-    mt-[120%] [@media(max-width:380px)]:mt-[150%] sm:mt-[60%] md:mt-[40%] lg:mt-0
+        className="relative z-10 
+    mt-0 sm:mt-8 md:mt-12 lg:mt-0
     mb-12 sm:mb-16 lg:mb-0
     transition-all duration-300 ease-in-out lg:ml-20
     px-2 sm:px-0"
@@ -76,7 +76,11 @@ const Robo = () => {
       {/* 3D robot */}
       <Spline
         scene="https://prod.spline.design/ccc-O9i3lKM39c16/scene.splinecode"
-        className="absolute lg:top-0 top-[-20%] bottom-0 lg:left-[25%] sm:left-[-2%] h-full"
+        className=" absolute
+    lg:top-0 lg:left-[25%] lg:h-[90vh]
+    md:top-0 md:left-[0%] md:h-[85vh]
+    sm:top-[5%] sm:left-0 sm:h-[80vh]
+    top-[10%] left-0 h-[75vh] "
       />
     </main>
   );

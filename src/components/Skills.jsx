@@ -85,7 +85,7 @@ const floatAnimation = {
 
 const Skills = () => {
   return (
-       <section id="skills" className="bg-transparent">
+       <section id="skills" className="bg-transparent ">
       <div className="max-w-7xl mx-auto px-6 py-16 space-y-16">
         {skillCategories.map((category, catIdx) => (
           <div key={catIdx} className="space-y-6">

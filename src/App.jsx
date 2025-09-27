@@ -22,7 +22,7 @@ function App() {
    <div className="h-0 w-[40rem] absolute top-[20%] right-[-5%] shadow-[0_0_900px_20px_#e99b63] -rotate-[30deg] -z-10"></div> 
 
   <section id="Home"><Home /></section>
-   <section id="TeckStack"><Skills /></section>
+   <section id="TeckStack" ><Skills /></section>
   <section id="Experience"><Experience /></section>
 
   <Suspense fallback={"loading..."}>
