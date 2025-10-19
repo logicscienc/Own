@@ -25,11 +25,9 @@ function App() {
    <section id="TeckStack" ><Skills /></section>
   <section id="Experience"><Experience /></section>
 
-  <Suspense fallback={"loading..."}>
-    <LazyLoad height={600} offset={-100}>
+  
       <section id="Projects"><Projects /></section>
-    </LazyLoad>
-  </Suspense>
+   
 
   <section id="Contacts"><Contact /></section>  
   <Footer/>

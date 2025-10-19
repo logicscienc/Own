@@ -47,9 +47,9 @@ const Home = () => {
   };
 
   return (
-    <div className="w-full h-full px-2 sm:px-4 md:px-6">
+    <div className="w-full h-full px-2 overflow-x-hidden">
       {/* Navbar */}
-      <div className="fixed top-2 sm:top-4 left-1/2 transform -translate-x-1/2 z-50 flex flex-row items-center px-2 sm:px-4">
+    <div className="fixed top-2 sm:top-4 left-1/2 transform -translate-x-1/2 z-50 flex flex-row items-center px-2 sm:px-4">
         <div className="flex items-center rounded-full border border-gray-300 px-2 sm:px-4 py-2 space-x-3 sm:space-x-4 md:space-x-6 bg-transparent backdrop-blur-md shadow-md">
           {navItems.map((item) => {
             const isActive = active === item.id;
@@ -91,7 +91,9 @@ const Home = () => {
             Resume
           </span>
         </a>
-      </div>
+      </div> 
+
+
 
       {/* Center Section with Hire Button */}
       <div className="flex flex-col sm:flex-row items-center my-8 mt-28 sm:mt-36 px-2 sm:px-4">
